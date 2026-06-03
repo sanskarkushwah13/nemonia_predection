@@ -1,59 +1,73 @@
-Medical Image Classification
-This project uses deep learning to classify medical images into different categories. It includes image preprocessing, model training/evaluation notebooks, a saved trained model, and a dataset folder.
+# Medical Image Classification
 
-Project Structure
-.
-├── DS2/
-│   └── Dataset files
-├── imageprocessing.ipynb
-├── MedicalImageClassification.ipynb
-├── imageClassificationModel.h5
-├── .gitignore
-└── .gitattributes
-Files
-DS2/ contains the medical image dataset used for training and testing.
-imageprocessing.ipynb contains image loading, resizing, cleaning, preprocessing, and dataset preparation steps.
-MedicalImageClassification.ipynb contains the model building, training, evaluation, and prediction workflow.
-imageClassificationModel.h5 is the saved trained model file.
-Features
-Medical image preprocessing
-Image classification using a deep learning model
-Model training and evaluation
-Saved model for reuse without retraining
-Notebook-based workflow for easy experimentation
-Requirements
+This repository contains a deep learning project for classifying chest X-ray images as Normal or Pneumonia. The implementation is based on TensorFlow/Keras and uses notebook-driven preprocessing, training, evaluation, and visualization.
+
+## Project Structure
+
+- `DS2/` - dataset folder containing chest X-ray images for training, validation, and testing
+- `imageprocessing.ipynb` - image loading, resizing, preprocessing, and dataset preparation steps
+- `MedicalImageClassification.ipynb` - model building, training, validation, evaluation, and prediction workflow
+- `imageClassificationModel.h5` - saved trained model file
+- `.gitignore` - ignored files and folders
+- `.gitattributes` - Git attributes configuration
+
+## Key Features
+
+- Image preprocessing and augmentation
+- CNN model architecture for binary classification
+- Training with callbacks: `ModelCheckpoint` and `EarlyStopping`
+- Evaluation with accuracy and confusion matrix metrics
+- Visualization of training history and sample images
+- Saved model for reuse without retraining
+
+## Requirements
+
 Install the required Python libraries before running the notebooks:
 
-pip install numpy pandas matplotlib opencv-python tensorflow keras scikit-learn jupyter
-Depending on the notebook contents, you may also need:
+```bash
+pip install numpy pandas matplotlib opencv-python tensorflow keras scikit-learn jupyter pillow seaborn
+```
 
-pip install pillow seaborn
-How to Run
-Open the project folder.
-Make sure the dataset is available inside the DS2/ folder.
-Start Jupyter Notebook:
+> Note: Depending on your environment, `tensorflow` may already include Keras.
+
+## How to Run
+
+1. Open the project folder in VS Code or Jupyter.
+2. Confirm the dataset is present under `DS2/` with the expected `train`, `validation`, and `test` subfolders.
+3. Start Jupyter Notebook:
+
+```bash
 jupyter notebook
-Run imageprocessing.ipynb to preprocess the images.
-Run MedicalImageClassification.ipynb to train, evaluate, or test the classification model.
-Use imageClassificationModel.h5 to load the saved model for predictions.
-Loading the Saved Model
+```
+
+4. Open and run `imageprocessing.ipynb` to prepare the image dataset.
+5. Open and run `MedicalImageClassification.ipynb` to build, train, and evaluate the model.
+6. Optionally load the saved model from `imageClassificationModel.h5` for inference.
+
+## Loading the Saved Model
+
 Example:
 
+```python
 from tensorflow.keras.models import load_model
 
 model = load_model("imageClassificationModel.h5")
-Model Workflow
-Load medical image dataset
-Preprocess images
-Split data into training and testing sets
-Build the image classification model
-Train the model
-Evaluate model performance
-Save or load the trained model
-Use the model for predictions
-Notes
-Keep the dataset folder structure consistent with the notebook code.
-Large dataset files and trained model files may be excluded from Git depending on .gitignore.
-If the saved model does not load, check that the TensorFlow/Keras version matches the version used during training.
-Author
+```
+
+## Recommended Workflow
+
+- Preprocess the images and verify the dataset structure
+- Build the model architecture
+- Train with `train_generator` and validate with `validation_generator`
+- Plot training accuracy and loss curves
+- Run model predictions on the test set
+- Display sample images from train/validation folders
+
+## Notes
+
+- Keep the dataset folder structure consistent with notebook paths.
+- If you move the dataset, update the path variables in the notebooks.
+- If model loading fails, verify the installed TensorFlow/Keras version matches the version used during training.
+
+## Author
 Medical Image Classification Project
