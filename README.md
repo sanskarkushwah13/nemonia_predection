@@ -70,4 +70,4 @@ model = load_model("imageClassificationModel.h5")
 - If model loading fails, verify the installed TensorFlow/Keras version matches the version used during training.
 
 ## Author
-Medical Image Classification Project
+Sanskar kushwah
